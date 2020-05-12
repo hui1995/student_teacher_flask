@@ -1,0 +1,55 @@
+
+{% extends  'base.html' %}
+{% block title%}
+
+{% endblock %}
+
+{% block content %}
+		<div id="page-wrapper">
+			<div class="main-page">
+				<h3 class="title1">Import Course</h3>
+				<!-- scoring rate table start-->
+				<div class=" form-grids row form-grids-right">
+					<div class="widget-shadow " data-example-id="basic-forms">
+						<div class="form-title">
+							<h4>Import Course :</h4>
+						</div>
+					<div class="form-body">
+				      <form method="post" action="/course">
+
+					<div class="divb">
+				        <div class="form-group">
+				          <label for="exampleInputTitle">Title: </label>
+				          <input type="name" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title">
+				      </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <!-- Message shows here -->
+                                <strong>{{ message }}</strong>
+                            </div>
+                        </div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					<a href="/teacher">
+						<button type="button" class="btn btn-default">Cancel</button>
+					</a>
+
+                    </div>
+                                                </form>
+
+
+					</div>
+				</div>
+
+				<!-- scoring rate table end-->
+
+				<!-- Update start-->
+				<div class=" form-grids row form-grids-right">
+
+					</div>
+				</div>
+				<!-- Update end-->
+			</div>
+		</div>
+
+{% endblock %}

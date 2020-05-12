@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Teacher Display
+{% endblock %}
+
+{% block content %}
+		<div id="page-wrapper">
+			<div class="main-page">
+				<h3 class="title1">Teacher's Operations</h3>
+
+				<!-- scoring rate table start-->
+				<div class=" form-grids row form-grids-right">
+					<div class="widget-shadow " data-example-id="basic-forms">
+					<!--<form accept-charset="UTF-8" role="form" action="#" method="post">
+                    <fieldset>-->
+						<div class="form-title">
+							<h4>Choose Your Operation :</h4>
+						</div>
+					<div class="form-body">
+						<a href="/teacher/import">
+							<button type="button" class="btn btn-primary">Import</button></a>
+					<a href="teacherdisplay.html">
+                        <button type="button" class="btn btn-secondary">Edit title</button></a>
+					<a href="/teacher/edit/item">
+					<button type="button" class="btn btn-success">Edit Items</button></a>
+					<a href="selectstudents.html">
+					<button type="button" class="btn btn-danger">Export</button></a>
+					<a href="/member/edit">
+					<button type="button" class="btn btn-warning">Form Groups</button></a>
+					</div>
+				<!--</fieldset>
+                </form>-->
+					</div>
+				</div>
+
+				<!-- scoring rate table end-->
+
+				<!-- Update start-->
+				<div class=" form-grids row form-grids-right">
+
+					</div>
+				</div>
+				<!-- Update end-->
+			</div>
+
+{% endblock %}

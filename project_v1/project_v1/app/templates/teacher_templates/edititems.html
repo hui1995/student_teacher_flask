@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+Edit Items
+{% endblock %}
+
+
+{% block content %}
+		<div id="page-wrapper">
+			<div class="main-page">
+				<h3 class="title1">Edit Items</h3>
+
+				<!-- scoring rate table start-->
+				<div class=" form-grids row form-grids-right">
+					<div class="widget-shadow " data-example-id="basic-forms">
+					<!--<form accept-charset="UTF-8" role="form" action="#" method="post">
+                    <fieldset>-->
+						<div class="form-title">
+							<h4>Edit Items:</h4>
+						</div>
+					<div class="form-body">
+
+					<div class="divb">
+				      <form>
+				        <div class="form-group">
+				          <div class="form-group">
+                            <label for="exampleInputTitle">Minutes: </label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Minutes">
+                            </div>
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                              </div>
+
+                            <a href="editoneitem.html">
+								<button type="button" class="btn btn-default">Modify</button>
+                            </a>
+							  <a href="confirm.html">
+								<button type="button" class="btn btn-default">Add</button>
+                            </a>
+
+                            <a href="/teacher/display">
+                                <button type="button" class="btn btn-default">Back</button>
+                            </a>
+
+					</div>
+				<!--</fieldset>
+                </form>-->
+					</div>
+				</div>
+
+				<!-- scoring rate table end-->
+
+				<!-- Update start-->
+				<div class=" form-grids row form-grids-right">
+
+					</div>
+				</div>
+				<!-- Update end-->
+			</div>
+		</div>
+		<!--footer-->
+		<div class="footer">
+		   <p>Copyright &copy; 2018.Company name All rights reserved.More Templates 1002G4</P>
+	   </div>
+        <!--//footer-->
+	</div>
+
+{% endblock %}
