@@ -6,11 +6,11 @@ class Student(User):
     GPA = Column(Float)
     email = Column(String(24), unique=True, nullable=True)
 
-    def __init__(self, name, GPA, email, password):
-        super(Student,self).__init__(name, password)
-        self.id = id
+    def __init__(self, name,id, GPA, email, password,programme):
+        super(Student,self).__init__(name, password,programme)
         self.GPA = GPA
         self.email = email
+        self.id=id
 
     def jsonstr(self):
 

@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}
-method1
-
-{% endblock %}
-
 {% block content %}
+
 		<div id="page-wrapper">
 			<div class="main-page">
-				<h3 class="title1">Methods of Forming Groups</h3>
+				<h3 class="title1">Evaluate Leader</h3>
 
 				<!-- scoring rate table start-->
 				<div class=" form-grids row form-grids-right">
@@ -16,16 +12,37 @@ method1
 					<!--<form accept-charset="UTF-8" role="form" action="#" method="post">
                     <fieldset>-->
 						<div class="form-title">
-							<h4>Choose Your Methods :</h4>
+							<h4>Evaluate Your Leader :</h4>
 						</div>
 					<div class="form-body">
-					<a href="/course/by/gpa?courseId={{ courseId }}">
-					<button type="button" class="btn btn-primary">By GPA</button></a>
-					<a href="/course/by/student?courseId={{ courseId }}">
-					<button type="button" class="btn btn-secondary">Group</button></a>
-					<a href="/member/choose/method?courseId={{ courseId }}">
-					<button type="button" class="btn btn-warning">Cancel</button></a>
-					</div>
+
+					<div class="divb">
+
+
+	                            <table class="table table-striped">
+  <thead>
+    <tr>
+              <th>学生姓名</th>
+
+      <th>评估</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for foo2 in result %}
+          <tr>
+      <td>{{ foo2.name }}</td>
+      <td>	<a href="/member/evaluate?id={{ foo2.id }}">
+						<button type="button" class="btn btn-default">评估</button>
+					</a></td>
+    </tr>
+
+
+  {% endfor %}
+
+
+  </tbody>
+</table>
+				    	</div>
 				<!--</fieldset>
                 </form>-->
 					</div>
@@ -40,6 +57,6 @@ method1
 				</div>
 				<!-- Update end-->
 			</div>
+		</div>
 
 {% endblock %}
-

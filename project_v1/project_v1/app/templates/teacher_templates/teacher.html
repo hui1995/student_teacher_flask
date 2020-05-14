@@ -2,6 +2,7 @@
 
 {% block title %}
     Teacher
+
 {% endblock %}
 
 {% block content %}
@@ -21,21 +22,45 @@
                         <a href="/course">
                             <button type="button" class="btn btn-primary">Import</button>
                         </a>
-                        <a href="/teacher/display">
-                            <button type="button" class="btn btn-secondary">Edit Items</button>
-                        </a>
-                        <a href="/teacher/display">
-                            <button type="button" class="btn btn-success">Form Groups</button>
-                        </a>
-                        <a href="/teahcer/export">
-                            <button type="button" class="btn btn-danger">Export</button>
-                        </a>
+
+
                         <a href="/user/logout">
                             <button type="button" class="btn btn-warning">Logout</button>
                         </a>
+
+
+{% if result %}
+          <table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Course Name</th>
+			<th>option</th>
+		</tr>
+	</thead>
+	<tbody>
+
+    {% for foo in result %}
+    		<tr>
+			<td>{{ foo.courseName }}</td>
+			<td>							<a href="/course/display?id={{ foo.CourseId }}">	<button type="button" class="btn btn-default">Option</button></a>
+            </a>
+</td>
+		</tr>
+
+    {% endfor %}
+
+
+
+
+
+	</tbody>
+</table>
+                {% endif %}
                     </div>
                     <!--</fieldset>
                     </form>-->
+
+
                 </div>
             </div>
 

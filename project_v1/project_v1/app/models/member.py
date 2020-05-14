@@ -1,23 +1,16 @@
 from sqlalchemy import Column, String, Integer, orm
-from app.models.student import Student
+from app.models.base import Base
 
-class Member(Student):
+
+class Member(Base):
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+
 
     contribution = Column(String(50), nullable=True)
+    teamId=Column(Integer)
+    studentId=Column(Integer)
+    votenum = Column(Integer)
+    isVote=Column(Integer,default=0)
+    leaderEvate=Column(String(50),nullable=True)
 
-    def __init__(self, name, id, GPA, email, contribution, password):
-        super(Member,self).__init__(name, GPA, email, password)
-        self.contribution = contribution
-        
 
-    def jsonstr(self):
-
-        jsondata = {
-            'name':self.name,
-            'age': self.age,
-            'email':self.email,
-            'contribution':self.contribution
-
-        }
-
-        return jsondata

@@ -18,16 +18,22 @@ Teacher Display
 							<h4>Choose Your Operation :</h4>
 						</div>
 					<div class="form-body">
-						<a href="/teacher/import">
+						<a href="/teacher/import?id={{ id }}">
 							<button type="button" class="btn btn-primary">Import</button></a>
 					<a href="teacherdisplay.html">
                         <button type="button" class="btn btn-secondary">Edit title</button></a>
-					<a href="/teacher/edit/item">
+					<a href="/subItem?id={{ id }}">
 					<button type="button" class="btn btn-success">Edit Items</button></a>
-					<a href="selectstudents.html">
+					<a href="/teacher/export?id={{ id }}">
 					<button type="button" class="btn btn-danger">Export</button></a>
-					<a href="/member/edit">
+
+                        {% if isTeamType %}
+
+                            {% else %}
+                        	<a href="/member/edit?id={{ id }}">
 					<button type="button" class="btn btn-warning">Form Groups</button></a>
+                        {% endif %}
+
 					</div>
 				<!--</fieldset>
                 </form>-->

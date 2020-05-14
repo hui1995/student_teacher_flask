@@ -20,28 +20,55 @@ Edit Items
 					<div class="form-body">
 
 					<div class="divb">
+
+
+
 				      <form>
 				        <div class="form-group">
-				          <div class="form-group">
-                            <label for="exampleInputTitle">Minutes: </label>
-                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Minutes">
-                            </div>
-                            <div class="alert alert-danger" role="alert">
-                                {{ message }}
-                              </div>
 
-                            <a href="editoneitem.html">
-								<button type="button" class="btn btn-default">Modify</button>
-                            </a>
-							  <a href="confirm.html">
+
+							  <a href="/subItem/edit?courseId={{ courseId }}">
 								<button type="button" class="btn btn-default">Add</button>
                             </a>
 
-                            <a href="/teacher/display">
+                            <a href="/teacher/display?id={{ courseId }}">
                                 <button type="button" class="btn btn-default">Back</button>
                             </a>
 
 					</div>
+
+
+                      </form>
+
+      {% if result %}
+          <table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Percentage</th>
+			<th>option</th>
+		</tr>
+	</thead>
+	<tbody>
+
+    {% for foo in result %}
+    		<tr>
+			<td>{{ foo.title }}</td>
+			<td>{{ foo.percentage }}</td>
+			<td>							<a href="/subItem/edit?title={{ foo.title }}&courseId={{ courseId }}">	<button type="button" class="btn btn-default">Modify</button></a>
+                <a href="/subItem/delete?title={{ foo.title }}&courseId={{ courseId }}"><button type="button" class="btn btn-default" style="margin-left: 20px">Delete</button></a>
+</td>
+		</tr>
+
+    {% endfor %}
+
+
+	</tbody>
+</table>
+
+
+      {% endif %}
+
 				<!--</fieldset>
                 </form>-->
 					</div>

@@ -22,7 +22,7 @@ class Base(db.Model):
     __abstract__ = True # 抽象模型，不会创建实体表，否则需要创建主键
     
     # 增加一个创建时间的属性,用于记录实例对象创建的时间
-    create_time = Column('create_time', Integer)
+    create_time = Column(Integer)
     # default=1表示未删除，=0表示已删除
     status = Column(SmallInteger, default=1)
 
