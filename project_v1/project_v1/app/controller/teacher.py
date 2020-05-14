@@ -128,10 +128,14 @@ def ImportClass():
             with db.auto_commit():
                 # name password programme id gpa email contribution
 
-                student = Student(s[0], s[3],s[4],s[5], s[2], s[1])
+                try:
+
+                    student = Student(s[0], s[3],s[4],s[5], s[2], s[1])
 
                 # 数据库的insert操作
-                db.session.add(student)
+                    db.session.add(student)
+                except:
+                    continue
 
             student = Student.query.filter_by(email=s[5]).first()
             if student is not None:
