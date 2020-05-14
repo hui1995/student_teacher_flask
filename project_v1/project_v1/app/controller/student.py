@@ -100,7 +100,7 @@ def displayfirend():
 
         #显示创建按钮，先查询出来当前课程学生的总数，然后查出每组的学生最大量，然后查询当前组的个数
         courseId=CourseAndStudent.query.filter_by(studentId=session.get("id")).first().CourseId
-        totalNum=Course.query.filter_by(CourseId=courseId).first().totalNum
+        totalNum=Course.query.filter_by(CourseId=courseId).first().numofmember
         teamNum=Team.query.filter_by(courseId=courseId).count()
         studentCount=CourseAndStudent.query.filter_by(CourseId=courseId).count()
 
@@ -184,7 +184,7 @@ def join():
         return render_template('student_templates/viewinvitation.html', name=name, message="该小组满员了")
 
     courseId=CourseAndStudent.query.filter_by(studentId=session.get("id")).first().CourseId
-    totalNum=Course.query.filter_by(CourseId=courseId).first().totalNum
+    totalNum=Course.query.filter_by(CourseId=courseId).first().numofmember
     with db.auto_commit():
         memberr=Member()
         memberr.teamId=teamId

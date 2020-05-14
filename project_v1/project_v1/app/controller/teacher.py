@@ -4,6 +4,7 @@ from app.models.base import db
 from app.models.course import Course
 from app.models.student import Student
 from app.models.CourseAndStudent import CourseAndStudent
+from app.models.member import Member
 
 import xlrd
 from io import BytesIO
@@ -53,19 +54,27 @@ def export_excel():
     if request.method == 'GET':
         courseId=request.args.get("courseId")
         studentlst=CourseAndStudent.query.filter_by(CourseId=courseId)
+        print(studentlst)
         output = BytesIO()
         # 创建Excel文件,不保存,直接输出
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
         # 设置Sheet的名字为download
         worksheet = workbook.add_worksheet('download')
         # 列首
-        title = ["Id","name", "email", "password","GPA","programme"]
+        title = ["Id","name", "email", "password","GPA","programme","contribution"]
         worksheet.write_row('A1', title)
         count=0
         for i in studentlst:
             count+=1
             i=Student.query.filter_by(id=i.studentId).first()
-            row = [i.id, i.name, i.email,i.password,i.GPA,i.programme]
+            member=Member.query.filter_by(studentId=i.id).first()
+            if member is None:
+                row = [i.id, i.name, i.email,i.password,i.GPA,i.programme,""]
+
+            else:
+
+                row = [i.id, i.name, i.email,i.password,i.GPA,i.programme,member.contribution]
+
             worksheet.write_row('A' + str(count + 2), row)
         workbook.close()
         response = make_response(output.getvalue())
@@ -155,7 +164,7 @@ def ImportIndivaidual():
     if request.method=="GET":
 
 
-        return render_template("teacher_templates/importindividual.html",id=id,name=name)
+        return render_template("teacher_templates/importindividual.html",courseId=courseId,name=name)
     else:
         name=request.form.get("name")
         password=request.form.get("password")
@@ -165,14 +174,14 @@ def ImportIndivaidual():
         id=request.form.get("id")
 
         if email =="" or password =="" or gpa=="" or programme=="" or name=="" or id=="":
-            return render_template("teacher_templates/importindividual.html", id=id, name=name,message="参数不完全")
+            return render_template("teacher_templates/importindividual.html", courseId=courseId, name=name,message="参数不完全")
 
         student=Student.query.filter_by(email=email).first()
         if student:
-            return render_template("teacher_templates/importindividual.html", id=id, name=name,message="该学生已经存在")
+            return render_template("teacher_templates/importindividual.html", courseId=courseId, name=name,message="该学生已经存在")
         student=Student.query.filter_by(id=id).first()
         if student:
-            return render_template("teacher_templates/importindividual.html", id=id, name=name,message="该学生已经存在")
+            return render_template("teacher_templates/importindividual.html", courseId=courseId, name=name,message="该学生已经存在")
 
 
 
@@ -190,7 +199,7 @@ def ImportIndivaidual():
                 courseAndStudent.studentId = student.id
                 db.session.add(courseAndStudent)
 
-        return render_template("teacher_templates/importindividual.html", id=id, name=name, message="学生提交成功")
+        return render_template("teacher_templates/importindividual.html", courseId=courseId, name=name, message="学生提交成功")
 
 
 

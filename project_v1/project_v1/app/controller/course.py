@@ -33,7 +33,7 @@ def get_course():
             course.courseName = name
             course.teacherId=session.get("id")
             db.session.add(course)
-        return redirect("/course/")
+        return redirect("/course")
 
 
 @courseBP.route("/display",methods=['GET'])
@@ -116,7 +116,7 @@ def byStudent():
 
 
     #每组的人数
-    totalNum=Course.query.filter_by(CourseId=courseId).first().totalNum
+    totalNum=Course.query.filter_by(CourseId=courseId).first().numofmember
 
 
     #组的数量
