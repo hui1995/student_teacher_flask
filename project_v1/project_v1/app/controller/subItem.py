@@ -11,7 +11,7 @@ def get_subItem():
     name = session.get("name")
     courseId=request.args.get("id")
 
-    subItemList=SubItem.query.all()
+    subItemList=SubItem.query.filter(SubItem.courseId==courseId)
 
     return render_template('teacher_templates/edititems.html',result=subItemList,name=name,courseId=courseId)
 
@@ -36,7 +36,6 @@ def edit_subItem():
 
     if request.method=="GET":
         title=request.args.get("title",None)
-        id=request.args.get("id",None)
 
 
         if title is not  None and title!="":

@@ -20,7 +20,12 @@
 					<div class="form-body">
 
 					<div class="divb">
-				      <form action="/teacher/import/individual?id={{ id }}" method="post">
+				      <form action="/teacher/import/individual?id={{ courseId }}" method="post">
+
+                                        <div class="form-group">
+				          <label for="exampleInputGPA">id: </label>
+				          <input class="form-control" name="id" id="exampleInputGPA1" placeholder="Enter ID">
+				        </div>
 				        <div class="form-group">
 				          <label for="exampleInputEmail1">Name: </label>
 				          <input type="email" class="form-control"name="name" placeholder="Enter name">        </div>

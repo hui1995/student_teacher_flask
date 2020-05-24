@@ -112,7 +112,8 @@ def byStudent():
     for i in studentList:
 
         student=Student.query.filter_by(id=i.studentId).first()
-        list.append(student)
+        if student is not None:
+            list.append(student)
 
 
     #每组的人数

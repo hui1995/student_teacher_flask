@@ -32,7 +32,7 @@ def edit_member():
         return render_template('teacher_templates/enternumofgroup.html',result=courselst,name=name,courseId=courseId)
     courseId=request.args.get("id")
     total=request.form.get("total")
-    Course.query.filter(Course.CourseId==courseId).update({"totalNum":total})
+    Course.query.filter(Course.CourseId==courseId).update({"numofmember":total})
     db.session.commit()
     return redirect("/member/choose/method?courseId="+courseId)
 

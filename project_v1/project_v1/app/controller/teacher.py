@@ -54,7 +54,6 @@ def export_excel():
     if request.method == 'GET':
         courseId=request.args.get("courseId")
         studentlst=CourseAndStudent.query.filter_by(CourseId=courseId)
-        print(studentlst)
         output = BytesIO()
         # 创建Excel文件,不保存,直接输出
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
@@ -113,7 +112,7 @@ def ImportClass():
         names = data.sheet_names()  # 返回book中所有工作表的名字
         status = data.sheet_loaded(names[0])  # 检查sheet1是否导入完毕
         nrows = table.nrows  # 获取该sheet中的有效行数
-        ncols = table.ncols  # 获取该sheet中的有效列数
+
 
 
         for  i in range(0,nrows):
@@ -124,14 +123,10 @@ def ImportClass():
             student = Student.query.filter_by(id=s[3]).first()
             if student:
                 continue
-
             with db.auto_commit():
                 # name password programme id gpa email contribution
-
                 try:
-
-                    student = Student(s[0], s[3],s[4],s[5], s[2], s[1])
-
+                    student = Student(s[0], s[4],s[3],s[5], s[2], s[1])
                 # 数据库的insert操作
                     db.session.add(student)
                 except:
@@ -143,6 +138,7 @@ def ImportClass():
                     courseAndStudent = CourseAndStudent()
                     courseAndStudent.CourseId = courseId
                     courseAndStudent.studentId = student.id
+
                     db.session.add(courseAndStudent)
 
 

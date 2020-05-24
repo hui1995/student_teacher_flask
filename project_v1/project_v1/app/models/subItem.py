@@ -3,7 +3,8 @@ from app.models.base import Base
 
 
 class SubItem(Base):
-    title = Column(String(50), primary_key=True, nullable=False)
+    title = Column(Integer, primary_key=True, nullable=False)
+    title = Column(String(50),nullable=False)
     percentage = Column(Float)
     courseId=Column(Integer)
 
